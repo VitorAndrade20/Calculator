@@ -9,6 +9,7 @@ class MyCalc extends WindowAdapter implements ActionListener{
     double xd;
     double num1, num2, check;
 
+    //class constructor
     MyCalc() {
         f = new Frame("MY CALCULATOR");
         l1 = new Label();
@@ -106,9 +107,9 @@ class MyCalc extends WindowAdapter implements ActionListener{
         f.setSize(360, 500);
         f.setLayout(null);
         f.setVisible(true);
-    }
-    //closing the window
+    }//end of constructor
 
+    //closing the window
     public void windowClosing(WindowEvent e) {
         f.dispose();
     }
@@ -178,6 +179,7 @@ class MyCalc extends WindowAdapter implements ActionListener{
             z = "-" + zt;
             l1.setText(z);
         }
+        //clear the last digit
         if (e.getSource() == bback) {
             zt = l1.getText();
             try {
@@ -188,8 +190,8 @@ class MyCalc extends WindowAdapter implements ActionListener{
             l1.setText(z);
         }
         //operations buttons;
-        //verifica se o número a ser dividido é válido;
-        //var check => armazena o tipo de operação a ser realizada.
+        //verifies if the divided number is valid;
+        //var check => stores the operation type.
         Object compare = e.getSource();
         if (compare == badd || compare == bsub || compare == bmult || compare == bdiv || compare == bmod) {
             try {
@@ -210,7 +212,7 @@ class MyCalc extends WindowAdapter implements ActionListener{
             z = "";
             l1.setText(z);
         }
-
+        //prompts the operation result or return an error if the input is invalid
         if (e.getSource() == bcalc) {
             try {
                 num2 = Double.parseDouble(l1.getText());
@@ -232,7 +234,7 @@ class MyCalc extends WindowAdapter implements ActionListener{
             }
             l1.setText(String.valueOf(xd));
         }
-
+        //clear button
         if (e.getSource() == bclr) {
             num1 = 0;
             num2 = 0;
