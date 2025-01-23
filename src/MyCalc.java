@@ -94,7 +94,7 @@ class MyCalc extends WindowAdapter implements ActionListener{
         f.add(b0);
         f.add(badd);
         f.add(bsub);
-        f.add(bmod);
+        //f.add(bmod);
         f.add(bmult);
         f.add(bdiv);
         f.add(bmod);
@@ -115,80 +115,159 @@ class MyCalc extends WindowAdapter implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e) {
-        String z, zt;
+        String z = "", zt = l1.getText(); //z -> Stores the value to be displayed after the current action.
+                                          //zt -> Stores the value displayed so far.
+        Button btn = (Button) e.getSource(); //Stores the Button pressed.
+        String label = btn.getLabel();       //Stores the label of Button.
+
+        //Switch Case for the "non-operation" buttons.
+        switch (label){
+            case "1":
+                z = zt + "1";
+                l1.setText(z);
+                break;
+            case "2":
+                z = zt + "2";
+                l1.setText(z);
+                break;
+            case "3":
+                z = zt + "3";
+                l1.setText(z);
+                break;
+            case "4":
+                z = zt + "4";
+                l1.setText(z);
+                break;
+            case "5":
+                z = zt + "5";
+                l1.setText(z);
+                break;
+            case "6":
+                z = zt + "6";
+                l1.setText(z);
+                break;
+            case "7":
+                z = zt + "7";
+                l1.setText(z);
+                break;
+            case "8":
+                z = zt + "8";
+                l1.setText(z);
+                break;
+            case "9":
+                z = zt + "9";
+                l1.setText(z);
+                break;
+            case "0":
+                z = zt + "0";
+                l1.setText(z);
+                break;
+//            case "badd":
+//
+//            case "bsub"
+//            case "bmod"
+//            case "bmult"
+//            case "bdiv"
+//            case "bcalc"
+            case "CE":
+                num1 = 0;
+                num2 = 0;
+                check = 0;
+                xd = 0;
+                z = "";
+                l1.setText(z);
+                break;
+            case ".":
+                z = zt + ".";
+                l1.setText(z);
+                break;
+//            case "-":
+//                z = "-" + zt;
+//                break;
+            case "back":
+                try {
+                    z = zt.substring(0, zt.length() - 1);
+                } catch (StringIndexOutOfBoundsException f) {
+                    return;
+                }
+                l1.setText(z);
+                break;
+            default: break;
+        }
+
         //number button
-        if (e.getSource() == b1) {
-            zt = l1.getText();
-            z = zt + "1";
-            l1.setText(z);
-        }
-        if (e.getSource() == b2) {
-            zt = l1.getText();
-            z = zt + "2";
-            l1.setText(z);
-        }
-        if (e.getSource() == b3) {
-            zt = l1.getText();
-            z = zt + "3";
-            l1.setText(z);
-        }
-        if (e.getSource() == b4) {
-            zt = l1.getText();
-            z = zt + "4";
-            l1.setText(z);
-        }
-        if (e.getSource() == b5) {
-            zt = l1.getText();
-            z = zt + "5";
-            l1.setText(z);
-        }
-        if (e.getSource() == b6) {
-            zt = l1.getText();
-            z = zt + "6";
-            l1.setText(z);
-        }
-        if (e.getSource() == b7) {
-            zt = l1.getText();
-            z = zt + "7";
-            l1.setText(z);
-        }
-        if (e.getSource() == b8) {
-            zt = l1.getText();
-            z = zt + "8";
-            l1.setText(z);
-        }
-        if (e.getSource() == b9) {
-            zt = l1.getText();
-            z = zt + "9";
-            l1.setText(z);
-        }
-        if (e.getSource() == b0) {
-            zt = l1.getText();
-            z = zt + "0";
-            l1.setText(z);
-        }
+//        if (e.getSource() == b1) {
+//            zt = l1.getText();
+//            z = zt + "1";
+//            l1.setText(z);
+//        }
+//        if (e.getSource() == b2) {
+//            zt = l1.getText();
+//            z = zt + "2";
+//            l1.setText(z);
+//        }
+//        if (e.getSource() == b3) {
+//            zt = l1.getText();
+//            z = zt + "3";
+//            l1.setText(z);
+//        }
+//        if (e.getSource() == b4) {
+//            zt = l1.getText();
+//            z = zt + "4";
+//            l1.setText(z);
+//        }
+//        if (e.getSource() == b5) {
+//            zt = l1.getText();
+//            z = zt + "5";
+//            l1.setText(z);
+//        }
+//        if (e.getSource() == b6) {
+//            zt = l1.getText();
+//            z = zt + "6";
+//            l1.setText(z);
+//        }
+//        if (e.getSource() == b7) {
+//            zt = l1.getText();
+//            z = zt + "7";
+//            l1.setText(z);
+//        }
+//        if (e.getSource() == b8) {
+//            zt = l1.getText();
+//            z = zt + "8";
+//            l1.setText(z);
+//        }
+//        if (e.getSource() == b9) {
+//            zt = l1.getText();
+//            z = zt + "9";
+//            l1.setText(z);
+//        }
+//        if (e.getSource() == b0) {
+//            zt = l1.getText();
+//            z = zt + "0";
+//            l1.setText(z);
+//        }
         //add decimal point
-        if (e.getSource() == bpts) {
-            zt = l1.getText();
-            z = zt + ".";
-            l1.setText(z);
-        }
-        //add negative sign
-        if (e.getSource() == bneg) {
-            zt = l1.getText();
-            z = "-" + zt;
-            l1.setText(z);
-        }
+//        if (e.getSource() == bpts) {
+//            zt = l1.getText();
+//            z = zt + ".";
+//            l1.setText(z);
+//        }
+//        //add negative sign
+//        if (e.getSource() == bneg) {
+//            zt = l1.getText();
+//            z = "-" + zt;
+//            l1.setText(z);
+//        }
         //clear the last digit
-        if (e.getSource() == bback) {
-            zt = l1.getText();
-            try {
-                z = zt.substring(0, zt.length() - 1);
-            } catch (StringIndexOutOfBoundsException f) {
-                return;
-            }
-            l1.setText(z);
-        }
+//        if (e.getSource() == bback) {
+//            zt = l1.getText();
+//            try {
+//                z = zt.substring(0, zt.length() - 1);
+//            } catch (StringIndexOutOfBoundsException f) {
+//                return;
+//            }
+//            l1.setText(z);
+//        }
         //operations buttons;
         //verifies if the divided number is valid;
         //var check => stores the operation type.
@@ -196,6 +275,7 @@ class MyCalc extends WindowAdapter implements ActionListener{
         if (compare == badd || compare == bsub || compare == bmult || compare == bdiv || compare == bmod) {
             try {
                 num1 = Double.parseDouble(l1.getText());
+              //  num1 = Double.parseDouble(l1.getText().substring(0,1));
             } catch (NumberFormatException f) {
                 l1.setText("Invalid Format");
                 return;
@@ -235,13 +315,13 @@ class MyCalc extends WindowAdapter implements ActionListener{
             l1.setText(String.valueOf(xd));
         }
         //clear button
-        if (e.getSource() == bclr) {
-            num1 = 0;
-            num2 = 0;
-            check = 0;
-            xd = 0;
-            z = "";
-            l1.setText(z);
-        }
+//        if (e.getSource() == bclr) {
+//            num1 = 0;
+//            num2 = 0;
+//            check = 0;
+//            xd = 0;
+//            z = "";
+//            l1.setText(z);
+//        }
     }
 }
