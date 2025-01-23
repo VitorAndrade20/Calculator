@@ -7,7 +7,8 @@ class MyCalc extends WindowAdapter implements ActionListener{
     Button b1, b2, b3, b4, b5, b6, b7, b8, b9, b0;
     Button badd,bsub,bmult,bdiv,bmod,bcalc,bclr,bpts,bneg,bback;
     double xd;
-    double num1, num2, check;
+    double num1, num2;
+    int check;
 
     //class constructor
     MyCalc() {
@@ -280,38 +281,72 @@ class MyCalc extends WindowAdapter implements ActionListener{
                 l1.setText("Invalid Format");
                 return;
             }
-            if (compare == badd) {
-                check = 1;
-            } else if (compare == bsub) {
-                check = 2;
-            } else if (compare == bmult) {
-                check = 3;
-            } else {
-                check = 4;
+            switch (label){
+                case "+":
+                    check = 1;
+                    break;
+                case "-":
+                    check = 2;
+                    break;
+                case "*":
+                    check = 3;
+                    break;
+                case "/":
+                    check = 4;
+                    break;
+                default:
+                    l1.setText("Invalid Input");
+                    break;
             }
+//            if (compare == badd) {
+//                check = 1;
+//            } else if (compare == bsub) {
+//                check = 2;
+//            } else if (compare == bmult) {
+//                check = 3;
+//            } else {
+//                check = 4;
+//            }
             z = "";
             l1.setText(z);
         }
         //prompts the operation result or return an error if the input is invalid
-        if (e.getSource() == bcalc) {
+        if ("=".equals(label)) {
             try {
                 num2 = Double.parseDouble(l1.getText());
             } catch (Exception f) {
                 l1.setText("Enter Number First");
                 return;
             }
-            if (check == 1) {
-                xd = num1 + num2;
+            switch (String.valueOf(check)) {
+                case "1":
+                    xd = num1 + num2;
+                    break;
+                case "2":
+                    xd = num1 - num2;
+                    break;
+                case "3":
+                    xd = num1 * num2;
+                    break;
+                case "4":
+                    xd = num1 / num2;
+                    break;
+                default:
+                    l1.setText("Invalid Input");
+                    break;
             }
-            if (check == 2) {
-                xd = num1 - num2;
-            }
-            if (check == 3) {
-                xd = num1 * num2;
-            }
-            if (check == 4) {
-                xd = num1 / num2;
-            }
+//            if (check == 1) {
+//                xd = num1 + num2;
+//            }
+//            if (check == 2) {
+//                xd = num1 - num2;
+//            }
+//            if (check == 3) {
+//                xd = num1 * num2;
+//            }
+//            if (check == 4) {
+//                xd = num1 / num2;
+//            }
             l1.setText(String.valueOf(xd));
         }
         //clear button
